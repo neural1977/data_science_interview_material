@@ -1,0 +1,18 @@
+ontologie
+record linkage
+quando si parla di record linkage, si parla di data integratio, si vogliono unire diversi archivi e si vuole fare una base informativa partendo da 
+tante basi informative, o un'azienda che assorbe un altra azienda e vuole unire il patrimonio informativo
+record linkage deterministico, fatto con le euristiche 
+probabilistico nel 69 felleghi sunter ti da una maniera per identificare quelli che, insieme a e b, fanno inizialmente un prodotto cartesiano tra 
+le tuple dell insieme a con quelle di b, quando si linka la stessa entità abbiamo un match, quando la tupla non è un match abbiamo un unmatch
+prodotto cartesiano con cardinalità pari alla cartinalita di A per B a meno che non fai il bloccaggio, la distribuzione dei match è molto minore 
+di quella degli unmatch
+per applicare l'algoritmo bisogna avere un vettore di confronto, per fare questo identifichi un certo numero di attributi che sono presenti sia in 
+una tabella che nell'altra, si costruisce vettore con 3 attributi, si hanno 2 alla terza combinazioni
+poi si definisce m la probabilità condizionata di avere configurare del vettore dei matching nell'insieme dei match e la chiamiamo m 
+mentre la probabilità di avere una certa configurazione gamma la chiamiamo un
+felleghi sunter dice che la quantità a cui bisogna trovare una somma è m/u
+coefficiente angolare beta uguale alla varianza fratto sigma
+controllo e correzione
+
+il teorema del limite centrale da la spiegazione che il valore atteso della media campionaria coincide con con la media della popolazione 
