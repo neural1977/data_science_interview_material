@@ -1,0 +1,26 @@
+vincoli di integrità 
+i data edit 
+gsbpm stanno alla fine della data collection 
+controllo e correzione 
+è un meccanismo di inputazione che dice che la migliore inputazione è quella che corregge la minima variazione dei dati, per entra negli edit
+due casuale ed errore ricorrente
+casuale: non genera una dispersione del fenomeno, dovuti a una bassa accuratezza
+ricorrente: è dovuto a errori nella progettazione del questionario, e generano una significativa distorsione del fenomeno 
+metodi di correzione deterministici
+casuali si trattano con quelli probabilistici 
+
+1) indici posizione
+2) rappresentazioni (box plot, rettangoli rappresntazione di primo e terzo, mediana) il minimo il massimo
+3) rdf è un modello logico dei dati, è strutturato, è uno strato del web semantico della semantic tower, su cui si poggiano le ontologie, è fatto da terne che si possono storare in triple store e quindi sparql, il soggetto e oggetto devono essere uri, e dati atomici devono, owl implementa logica del primo ordine e sottoinsieme chiamati description logic che è invece decidibile, per definire le ontologie e fare inferenza 
+4) sparql (basato su sintassi di sql) 
+5) normalizzazione
+6) seconda: ogni attributo deve dipendere funzionalmente dalla chiave primaria e non una sua parte 
+7) k-meams
+terza: non ci devono essere due attributi che dipendono uno dall'altro, l'unica dip funzionale solo con la chiave primaria 
+schema concettuale, logico, fisica 
+classi, tutte le istanze che hanno attributi in comune 
+logica regole su tabella 
+schemi data warehouse 
+db a grafo 
+le 3v nei big data
+

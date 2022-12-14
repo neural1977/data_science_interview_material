@@ -16,3 +16,7 @@ coefficiente angolare beta uguale alla varianza fratto sigma
 controllo e correzione
 
 il teorema del limite centrale da la spiegazione che il valore atteso della media campionaria coincide con con la media della popolazione 
+
+felleghi sunter
+felleghi holt
+dati di stock e dati di flusso
