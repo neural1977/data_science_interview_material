@@ -1,0 +1,116 @@
+﻿* Encoding: UTF-8.
+
+ONEWAY bcc_tot BY party_vot
+  /MISSING ANALYSIS
+  /POSTHOC=BONFERRONI ALPHA(0.05).
+
+ONEWAY bcc_tot BY party_vot
+  /CONTRAST=.25 .25 .25 .25 0 -.5 -.5 
+  /MISSING ANALYSIS.
+
+
+UNIANOVA bcc_tot BY sex sin_des
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /PLOT=PROFILE(sin_des*sex) TYPE=BAR ERRORBAR=SE(2) MEANREFERENCE=NO
+  /EMMEANS=TABLES(sex) COMPARE ADJ(BONFERRONI)
+  /EMMEANS=TABLES(sin_des) COMPARE ADJ(BONFERRONI)
+  /EMMEANS=TABLES(sex*sin_des) 
+  /CRITERIA=ALPHA(.05)
+  /DESIGN=sex sin_des sex*sin_des.
+
+
+
+UNIANOVA bcc_tot BY sex sin_des
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /PLOT=PROFILE(sin_des*sex) TYPE=BAR ERRORBAR=SE(2) MEANREFERENCE=NO
+  /EMMEANS=TABLES(sex) COMPARE ADJ(BONFERRONI)
+  /EMMEANS=TABLES(sin_des) COMPARE ADJ(BONFERRONI)
+  /EMMEANS=TABLES(sex*sin_des) 
+  /EMMEANS=TABLES(sex*sin_des)  COMPARE (sin_des) ADJ(BONFERRONI)
+  /CRITERIA=ALPHA(.05)
+  /DESIGN=sex sin_des sex*sin_des.
+
+
+COMPUTE sin_sex=sin_des * sex.
+EXECUTE.
+
+REGRESSION
+  /MISSING LISTWISE
+  /STATISTICS COEFF OUTS R ANOVA
+  /CRITERIA=PIN(.05) POUT(.10)
+  /NOORIGIN 
+  /DEPENDENT bcc_tot
+  /METHOD=ENTER sex sin_des sin_sex.
+
+
+****CENTRO SIN_DES SU DESTRA****.
+if (sin_des = 0) des_sin = 1.
+if (sin_des = 1) des_sin = 0.
+compute des_sex = des_sin*sex.
+EXECUTE.
+
+****STIMO IL MODELLO DI REGRESSIONE MODERATA CON SIN_DES CENTRATA SU DESTRA****.
+REGRESSION
+  /MISSING LISTWISE
+  /STATISTICS COEFF OUTS R ANOVA
+  /CRITERIA=PIN(.05) POUT(.10)
+  /NOORIGIN 
+  /DEPENDENT bcc_tot
+  /METHOD=ENTER sex des_sin des_sex.
+
+
+COMPUTE int_sdo=Zint_pol * Zsdo.
+EXECUTE.
+
+
+REGRESSION
+  /MISSING LISTWISE
+  /STATISTICS COEFF OUTS R ANOVA
+  /CRITERIA=PIN(.05) POUT(.10)
+  /NOORIGIN 
+  /DEPENDENT Zrwa
+  /METHOD=ENTER Zint_pol Zsdo int_sdo.
+
+
+
+compute low_int = zint_pol+1.
+compute high_int = zint_pol-1.
+
+
+compute Lint_sdo = low_int*zsdo.
+EXECUTE.
+
+compute Hint_sdo = high_int*zsdo.
+EXECUTE.
+
+
+REGRESSION
+  /MISSING LISTWISE
+  /STATISTICS COEFF OUTS R ANOVA
+  /CRITERIA=PIN(.05) POUT(.10)
+  /NOORIGIN 
+  /DEPENDENT Zrwa
+  /METHOD=ENTER low_int Zsdo Lint_sdo.
+
+
+REGRESSION
+  /MISSING LISTWISE
+  /STATISTICS COEFF OUTS R ANOVA
+  /CRITERIA=PIN(.05) POUT(.10)
+  /NOORIGIN 
+  /DEPENDENT Zrwa
+  /METHOD=ENTER high_int Zsdo Hint_sdo.
+
+
+
+
+
+
+
+
+
+
+
+
